@@ -1,17 +1,19 @@
 package com.source.countries.listcountries.viewmodel
 
-import com.source.countries.model.CountryModel
+import com.source.countries.listcountries.model.CountryItem
+import com.source.countries.listcountries.model.toItemList
+import com.source.countries.model.model.Country
 
 data class ListCountriesState(
-    val countries: List<CountryModel> = emptyList(),
+    val countries: List<CountryItem> = emptyList(),
     val error: Throwable? = null,
     val isErrorShow: Boolean = false,
     val isLoading: Boolean = false
 ) {
     companion object {
         @Suppress("NOTHING_TO_INLINE")
-        inline fun loaded(countries: List<CountryModel>): ListCountriesState {
-            return ListCountriesState(countries = countries)
+        inline fun loaded(countries: List<Country>): ListCountriesState {
+            return ListCountriesState(countries = countries.toItemList())
         }
 
         @Suppress("NOTHING_TO_INLINE")

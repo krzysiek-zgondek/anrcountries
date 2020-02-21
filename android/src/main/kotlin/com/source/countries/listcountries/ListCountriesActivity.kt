@@ -34,14 +34,14 @@ class ListCountriesActivity : AppCompatActivity() {
 
         swipeRefreshView.setOnRefreshListener {
             swipeRefreshView.isRefreshing = false
-            requestCountries()
+            requestCountries(fresh = true)
         }
 
         countryListView.adapter = countryAdapter
     }
 
-    private fun requestCountries() {
-        countryViewModel.getCountries().observe(this, ::updateState)
+    private fun requestCountries(fresh: Boolean = false) {
+        countryViewModel.getCountries(fresh).observe(this, ::updateState)
     }
 
     private fun updateState(state: ListCountriesState) {

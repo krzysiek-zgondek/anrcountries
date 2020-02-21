@@ -20,6 +20,20 @@ inline fun Currency.toModel(): CurrencyModel {
 }
 
 @Suppress("NOTHING_TO_INLINE")
+inline fun CurrencyModel.fromModel(): Currency {
+    return Currency(
+        code = code,
+        name = name,
+        symbol = symbol
+    )
+}
+
+@Suppress("NOTHING_TO_INLINE")
 inline fun List<Currency>.toModelList(): List<CurrencyModel> {
     return map(Currency::toModel)
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun List<CurrencyModel>.fromModelList(): List<Currency> {
+    return map(CurrencyModel::fromModel)
 }

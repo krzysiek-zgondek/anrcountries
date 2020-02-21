@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.source.countries.R
-import com.source.countries.model.CountryModel
+import com.source.countries.listcountries.model.CountryItem
+import com.source.countries.model.model.Country
 import kotlinx.android.synthetic.main.item_country_list.view.*
-
 
 
 /*
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.item_country_list.view.*
 * So i also omitted view holder
 * */
 class ListCountryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var items: List<CountryModel> = emptyList()
+    var items: List<CountryItem> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
