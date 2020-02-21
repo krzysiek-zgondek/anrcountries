@@ -11,12 +11,15 @@ data class CountryModel(
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun Country.toModel(): CountryModel {
-    val mappedCurrencies = currencies.map(Currency::toModel)
-
     return CountryModel(
         name = name,
         topLevelDomain = topLevelDomain,
         callingCodes = callingCodes,
-        currencies = mappedCurrencies
+        currencies = currencies.toModelList()
     )
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun List<Country>.toModelList(): List<CountryModel> {
+    return map(Country::toModel)
 }

@@ -16,3 +16,8 @@ inline fun Currency.toModel(): CurrencyModel {
         symbol = symbol
     )
 }
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun List<Currency>.toModelList(): List<CurrencyModel> {
+    return map(Currency::toModel)
+}
