@@ -6,4 +6,3 @@ data class Country(
     val callingCodes: List<String>?,
     val currencies: List<Currency>?
 )
-
