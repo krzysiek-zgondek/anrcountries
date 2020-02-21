@@ -3,4 +3,5 @@
     <string name="name">Name</string>
     <string name="code">Code</string>
     <string name="domain">Domain</string>
+    <string name="error_loading_countries">Error has occurred.\nClick to retry</string>
 </resources>
