@@ -3,10 +3,7 @@ package com.source.countries.model.common
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-/**
- * @author SourceOne on 21.02.2020
- * @project Countries
- */
+
 class ResourceTest {
 
     @Test
