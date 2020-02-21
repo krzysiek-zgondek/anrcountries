@@ -12,17 +12,26 @@ object KotlinGradle {
     )
 }
 
+object KotlinCoroutines {
+    const val version = "1.3.3"
+    val dependencies = arrayOf(
+        "implementation" to "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version",
+        "implementation" to "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+    )
+}
+
 object AndroidX {
     val dependencies = arrayOf(
         "implementation" to "androidx.appcompat:appcompat:1.1.0",
         "implementation" to "androidx.recyclerview:recyclerview:1.1.0",
         "implementation" to "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0",
         "implementation" to "androidx.constraintlayout:constraintlayout:1.1.3",
-        "implementation" to "androidx.core:core-ktx:1.2.0"
+        "implementation" to "androidx.core:core-ktx:1.2.0",
+        "implementation" to "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     )
 }
 
-object Koin{
+object Koin {
     const val version = "2.0.1"
 
     val dependencies = arrayOf(
@@ -64,6 +73,7 @@ val Classpaths = listOf(
 
 val DependenciesAndroid =
     KotlinGradle.dependencies +
+            KotlinCoroutines.dependencies +
             AndroidX.dependencies +
             Koin.dependencies +
             Retrofit.dependencies +
