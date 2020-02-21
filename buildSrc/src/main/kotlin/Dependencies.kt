@@ -80,9 +80,18 @@ object Moshi {
     )
 }
 
+object ThreeTen {
+    const val version = "1.4.1"
+
+    val dependencies = arrayOf(
+        "implementation" to "org.threeten:threetenbp:$version"
+    )
+}
+
 object Tests {
     val dependencies = arrayOf(
-        "testImplementation" to "junit:junit:4.12"
+        "testImplementation" to "junit:junit:4.12",
+        "testImplementation" to "org.mockito:mockito-core:3.2.4"
     )
 }
 
@@ -109,6 +118,7 @@ val DependenciesData =
             Retrofit.dependencies +
             Moshi.dependencies +
             OkHttp.dependencies +
+            ThreeTen.dependencies +
             Tests.dependencies
 
 val DependenciesDomain =
