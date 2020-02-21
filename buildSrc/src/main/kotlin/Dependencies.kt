@@ -20,6 +20,17 @@ object AndroidX {
     )
 }
 
+object Koin{
+    const val version = "2.0.1"
+
+    val dependencies = arrayOf(
+        "implementation" to "org.koin:koin-core:$version",
+        "implementation" to "org.koin:koin-android:$version",
+        "implementation" to "org.koin:koin-androidx-viewmodel:$version"
+    )
+}
+
+
 object Retrofit {
     const val version = "2.7.1"
 
@@ -29,6 +40,14 @@ object Retrofit {
     )
 }
 
+object Moshi {
+    const val version = "1.9.2"
+
+    val dependencies = arrayOf(
+        "implementation" to "com.squareup.moshi:moshi:$version",
+        "implementation" to "com.squareup.moshi:moshi-kotlin:$version"
+    )
+}
 
 object Tests {
     val dependencies = arrayOf(
@@ -42,11 +61,17 @@ val Classpaths = listOf(
 )
 
 val DependenciesAndroid =
-    KotlinGradle.dependencies + AndroidX.dependencies +
-            Retrofit.dependencies + Tests.dependencies
+    KotlinGradle.dependencies +
+            AndroidX.dependencies +
+            Koin.dependencies +
+            Retrofit.dependencies +
+            Moshi.dependencies +
+            Tests.dependencies
 
 val DependenciesCommon =
-    KotlinGradle.dependencies + Tests.dependencies
+    KotlinGradle.dependencies +
+            Tests.dependencies
 
 val DependenciesDomain =
-    KotlinGradle.dependencies + Tests.dependencies
+    KotlinGradle.dependencies +
+            Tests.dependencies
