@@ -2,8 +2,18 @@ package com.source.countries.model.common
 
 
 sealed class Resource<T> {
-    class Success<T>(val resource: T) : Resource<T>()
+    class Success<T>(val value: T) : Resource<T>()
     class Error<T>(val reason: Throwable) : Resource<T>()
+
+    companion object{
+        inline fun <reified T> success(value: T): Resource<T> {
+            return Success(value)
+        }
+
+        inline fun <reified T : Throwable> error(reason: T): Resource<T> {
+            return Error(reason)
+        }
+    }
 }
 
 /**
@@ -18,13 +28,16 @@ inline fun <reified T> resource(provider: () -> T): Resource<T> {
     }
 }
 
-inline fun <reified T> Resource<T>.onSuccess(receiver: (T) -> Unit): Resource<T> {
+/**
+ * Helper functions
+ * */
+inline fun <reified T> Resource<T>.whenSuccessful(receiver: (T) -> Unit): Resource<T> {
     if (this is Resource.Success)
-        receiver(resource)
+        receiver(value)
     return this
 }
 
-inline fun <reified T> Resource<T>.onFailed(receiver: (Throwable) -> Unit): Resource<T> {
+inline fun <reified T> Resource<T>.whenFailed(receiver: (Throwable) -> Unit): Resource<T> {
     if (this is Resource.Error)
         receiver(reason)
     return this
