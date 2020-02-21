@@ -1,13 +1,10 @@
 package com.source.countries.service
 
+import com.source.countries.model.Country
 import retrofit2.http.GET
 
-/**
- * @project Countries
- * @author SourceOne on 21.02.2020
- */
 
 interface CountryService{
     @GET("rest/v2/all")
-    fun countries()
+    suspend fun countries(): List<Country>
 }
