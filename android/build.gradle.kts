@@ -45,6 +45,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":common"))
 
     DependenciesAndroid.forEach { (type, name) -> add(type, name) }
 }

@@ -1,27 +1,43 @@
 package com.source.countries
 
-import com.source.countries.configuration.countryServiceConfiguration
+import com.source.countries.retrofit.createRetrofit
+import com.source.countries.service.CountryService
+import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.Retrofit
 
-/**
- * @project Countries
- * @author SourceOne on 21.02.2020
- */
 
 val CommonModule = module {
-    factory {
-        MoshiConverterFactory.create()
+    single {
+        createRetrofit(
+            baseUrl = androidContext().getString(R.string.country_api),
+            enableLogs = BuildConfig.DEBUG
+        )
     }
 }
 
 val NetworkModule = module {
     single {
-        countryServiceConfiguration()
+        get<Retrofit>().create(CountryService::class.java)
+    }
+}
+
+val Repositories = module {
+    single {
+        CountryRepository(get())
+    }
+}
+
+val ViewModels = module {
+    viewModel {
+        ListCountriesViewModel(get())
     }
 }
 
 val allModules = listOf(
     CommonModule,
-    NetworkModule
+    NetworkModule,
+    Repositories,
+    ViewModels
 )
