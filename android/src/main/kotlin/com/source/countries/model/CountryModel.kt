@@ -12,10 +12,10 @@ data class CountryModel(
 @Suppress("NOTHING_TO_INLINE")
 inline fun Country.toModel(): CountryModel {
     return CountryModel(
-        name = name,
-        topLevelDomain = topLevelDomain,
-        callingCodes = callingCodes,
-        currencies = currencies.toModelList()
+        name = name ?: "",
+        topLevelDomain = topLevelDomain ?: emptyList(),
+        callingCodes = callingCodes ?: emptyList(),
+        currencies = currencies?.toModelList() ?: emptyList()
     )
 }
 

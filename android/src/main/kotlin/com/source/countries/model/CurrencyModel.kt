@@ -11,9 +11,9 @@ data class CurrencyModel(
 @Suppress("NOTHING_TO_INLINE")
 inline fun Currency.toModel(): CurrencyModel {
     return CurrencyModel(
-        code = code,
-        name = name,
-        symbol = symbol
+        code = code ?: "",
+        name = name ?: "",
+        symbol = symbol ?: ""
     )
 }
 
