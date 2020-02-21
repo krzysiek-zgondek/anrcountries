@@ -41,13 +41,20 @@ object Koin {
     )
 }
 
-
 object Retrofit {
     const val version = "2.7.1"
 
     val dependencies = arrayOf(
         "implementation" to "com.squareup.retrofit2:retrofit:$version",
         "implementation" to "com.squareup.retrofit2:converter-moshi:$version"
+    )
+}
+
+object OkHttp {
+    const val version = "4.4.0"
+
+    val dependencies = arrayOf(
+        "implementation" to "com.squareup.okhttp3:logging-interceptor:$version"
     )
 }
 
@@ -82,6 +89,9 @@ val DependenciesAndroid =
 
 val DependenciesCommon =
     KotlinGradle.dependencies +
+            Retrofit.dependencies +
+            Moshi.dependencies +
+            OkHttp.dependencies +
             Tests.dependencies
 
 val DependenciesDomain =
