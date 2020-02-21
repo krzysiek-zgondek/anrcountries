@@ -29,11 +29,13 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
             )
         }
     }
+
+    sourceSets["main"].java.srcDir("src/main/kotlin")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -43,5 +45,6 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+
     DependenciesAndroid.forEach { (type, name) -> add(type, name) }
 }
