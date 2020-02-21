@@ -15,6 +15,8 @@ object KotlinGradle {
 object AndroidX {
     val dependencies = arrayOf(
         "implementation" to "androidx.appcompat:appcompat:1.1.0",
+        "implementation" to "androidx.recyclerview:recyclerview:1.1.0",
+        "implementation" to "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0",
         "implementation" to "androidx.constraintlayout:constraintlayout:1.1.3",
         "implementation" to "androidx.core:core-ktx:1.2.0"
     )
