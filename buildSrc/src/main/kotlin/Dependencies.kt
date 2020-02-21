@@ -20,6 +20,16 @@ object AndroidX {
     )
 }
 
+object Retrofit {
+    const val version = "2.7.1"
+
+    val dependencies = arrayOf(
+        "implementation" to "com.squareup.retrofit2:retrofit:$version",
+        "implementation" to "com.squareup.retrofit2:converter-moshi:$version"
+    )
+}
+
+
 object Tests {
     val dependencies = arrayOf(
         "testImplementation" to "junit:junit:4.12"
@@ -32,10 +42,11 @@ val Classpaths = listOf(
 )
 
 val DependenciesAndroid =
-    KotlinGradle.dependencies + AndroidX.dependencies + Tests.dependencies
+    KotlinGradle.dependencies + AndroidX.dependencies +
+            Retrofit.dependencies + Tests.dependencies
 
-val DependenciesCommon=
+val DependenciesCommon =
     KotlinGradle.dependencies + Tests.dependencies
 
-val DependenciesDomain=
+val DependenciesDomain =
     KotlinGradle.dependencies + Tests.dependencies
