@@ -15,8 +15,13 @@ object KotlinGradle {
 object KotlinCoroutines {
     const val version = "1.3.3"
     val dependencies = arrayOf(
-        "implementation" to "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version",
-        "implementation" to "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+        "implementation" to "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+    )
+}
+
+object KotlinCoroutinesAndroid {
+    val dependencies = arrayOf(
+        "implementation" to "org.jetbrains.kotlinx:kotlinx-coroutines-android:${KotlinCoroutines.version}"
     )
 }
 
@@ -38,9 +43,14 @@ object Koin {
     const val version = "2.0.1"
 
     val dependencies = arrayOf(
-        "implementation" to "org.koin:koin-core:$version",
-        "implementation" to "org.koin:koin-android:$version",
-        "implementation" to "org.koin:koin-androidx-viewmodel:$version"
+        "implementation" to "org.koin:koin-core:$version"
+    )
+}
+
+object KoinAndroid {
+    val dependencies = arrayOf(
+        "implementation" to "org.koin:koin-android:${Koin.version}",
+        "implementation" to "org.koin:koin-androidx-viewmodel:${Koin.version}"
     )
 }
 
@@ -84,14 +94,18 @@ val Classpaths = listOf(
 val DependenciesAndroid =
     KotlinGradle.dependencies +
             KotlinCoroutines.dependencies +
+            KotlinCoroutinesAndroid.dependencies +
             AndroidX.dependencies +
             Koin.dependencies +
+            KoinAndroid.dependencies +
             Retrofit.dependencies +
             Moshi.dependencies +
             Tests.dependencies
 
-val DependenciesCommon =
+val DependenciesData =
     KotlinGradle.dependencies +
+            KotlinCoroutines.dependencies +
+            Koin.dependencies +
             Retrofit.dependencies +
             Moshi.dependencies +
             OkHttp.dependencies +
@@ -99,4 +113,5 @@ val DependenciesCommon =
 
 val DependenciesDomain =
     KotlinGradle.dependencies +
+            KotlinCoroutines.dependencies +
             Tests.dependencies

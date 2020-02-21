@@ -17,5 +17,5 @@ dependencies {
     compileOnly(gradleApi())
     implementation(project(":domain"))
 
-    DependenciesCommon.forEach { (type, name) -> add(type, name) }
+    DependenciesData.forEach { (type, name) -> add(type, name) }
 }
