@@ -8,7 +8,7 @@ object KotlinGradle {
     const val classpath = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
 
     val dependencies = arrayOf(
-        "implementation" to "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version"
+        "implementation" to "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
     )
 }
 
@@ -30,6 +30,11 @@ val Classpaths = listOf(
     AndroidGradle.classpath
 )
 
-val Dependencies =
+val DependenciesAndroid =
     KotlinGradle.dependencies + AndroidX.dependencies + Tests.dependencies
 
+val DependenciesCommon=
+    KotlinGradle.dependencies + Tests.dependencies
+
+val DependenciesDomain=
+    KotlinGradle.dependencies + Tests.dependencies

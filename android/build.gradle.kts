@@ -34,10 +34,14 @@ android {
             )
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    Dependencies.forEach { (type, name) ->
-        add(type, name)
-    }
+    implementation(project(":domain"))
+    DependenciesAndroid.forEach { (type, name) -> add(type, name) }
 }

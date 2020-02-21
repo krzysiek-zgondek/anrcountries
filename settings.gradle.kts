@@ -1,2 +1,7 @@
-include (":android")
-rootProject.name="Countries"
+include(
+    ":domain",
+    ":common",
+    ":android"
+)
+
+rootProject.name = "Countries"
