@@ -5,4 +5,4 @@
 # debugging stack traces.
 -keepattributes SourceFile,LineNumberTable
 
--keep class com.source.countries.model.**
+-keep class com.source.countries.listcountries.model.**
