@@ -12,6 +12,16 @@ object KotlinGradle {
     )
 }
 
+object ObjectBoxAndroid {
+    const val version = "2.5.1"
+    const val classpath = "io.objectbox:objectbox-gradle-plugin:$version"
+
+    val dependencies = arrayOf(
+        "implementation" to "org.koin:koin-android:${Koin.version}",
+        "implementation" to "org.koin:koin-androidx-viewmodel:${Koin.version}"
+    )
+}
+
 object KotlinCoroutines {
     const val version = "1.3.3"
     val dependencies = arrayOf(
@@ -97,13 +107,16 @@ object Tests {
 
 val Classpaths = listOf(
     KotlinGradle.classpath,
-    AndroidGradle.classpath
+    AndroidGradle.classpath,
+    ObjectBoxAndroid.classpath
 )
 
 val DependenciesAndroid =
     KotlinGradle.dependencies +
             KotlinCoroutines.dependencies +
             KotlinCoroutinesAndroid.dependencies +
+            ObjectBoxAndroid.dependencies +
+            ThreeTen.dependencies +
             AndroidX.dependencies +
             Koin.dependencies +
             KoinAndroid.dependencies +

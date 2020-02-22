@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.source.countries.R
 import com.source.countries.listcountries.model.CountryItem
-import com.source.countries.model.model.Country
 import kotlinx.android.synthetic.main.item_country_list.view.*
 
 

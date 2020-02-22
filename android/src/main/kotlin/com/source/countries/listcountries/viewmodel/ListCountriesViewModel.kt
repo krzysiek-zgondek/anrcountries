@@ -3,11 +3,9 @@ package com.source.countries.listcountries.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.source.countries.model.common.whenFailed
-import com.source.countries.model.common.whenSuccessful
-import com.source.countries.model.interaction.GetAllCountries
-import com.source.countries.model.repository.CountryRepository
-import com.source.countries.model.toModelList
+import com.source.countries.common.whenFailed
+import com.source.countries.common.whenSuccessful
+import com.source.countries.listcountries.interaction.GetAllCountries
 import kotlinx.coroutines.flow.collect
 
 class ListCountriesViewModel(

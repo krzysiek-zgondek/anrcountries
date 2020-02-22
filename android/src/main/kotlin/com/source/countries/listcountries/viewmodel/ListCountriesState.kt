@@ -2,7 +2,7 @@ package com.source.countries.listcountries.viewmodel
 
 import com.source.countries.listcountries.model.CountryItem
 import com.source.countries.listcountries.model.toItemList
-import com.source.countries.model.model.Country
+import com.source.countries.listcountries.model.Country
 
 data class ListCountriesState(
     val countries: List<CountryItem> = emptyList(),
