@@ -1,6 +1,6 @@
-package com.source.countries.service
+package com.source.countries.listcountries.service
 
-import com.source.countries.model.model.Country
+import com.source.countries.listcountries.model.Country
 import retrofit2.http.GET
 
 

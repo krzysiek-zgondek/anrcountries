@@ -1,6 +1,5 @@
-package com.source.countries.model
+package com.source.countries.listcountries.model
 
-import com.source.countries.model.model.Country
 import org.threeten.bp.OffsetDateTime
 
 

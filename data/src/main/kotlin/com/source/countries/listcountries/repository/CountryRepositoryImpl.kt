@@ -1,11 +1,10 @@
-package com.source.countries.repository
+package com.source.countries.listcountries.repository
 
-import com.source.countries.model.common.Resource
-import com.source.countries.model.common.whenSuccessful
-import com.source.countries.model.common.resource
-import com.source.countries.model.model.Country
-import com.source.countries.model.repository.CountryRepository
-import com.source.countries.service.CountryService
+import com.source.countries.common.Resource
+import com.source.countries.common.whenSuccessful
+import com.source.countries.common.resource
+import com.source.countries.listcountries.model.Country
+import com.source.countries.listcountries.service.CountryService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

@@ -1,6 +1,4 @@
-package com.source.countries.model
-
-import com.source.countries.model.model.Currency
+package com.source.countries.listcountries.model
 
 
 data class CurrencyModel(
