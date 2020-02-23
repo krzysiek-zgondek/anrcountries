@@ -22,7 +22,7 @@ val CountryConfiguration = module {
     factory<LocalCountryRepository> {
         PersistentCountryRepository(
             get(),
-            dataLifeTime = Duration.ofSeconds(15)
+            dataLifeTime = Duration.ofDays(1)
         )
     }
 
