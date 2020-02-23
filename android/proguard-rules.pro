@@ -5,4 +5,8 @@
 # debugging stack traces.
 -keepattributes SourceFile,LineNumberTable
 
--keep class com.source.countries.listcountries.model.**
+-keep class com.source.countries.listcountries.model.** { *; }
+
+#moshi kotlin reflect
+-keep class kotlin.reflect.jvm.internal.** { *; }
+-keep class kotlin.Metadata { *; }

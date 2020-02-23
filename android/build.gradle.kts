@@ -36,6 +36,8 @@ android {
     buildTypes {
         getByName("debug") {
             signingConfig = signingConfigs["debug"]
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
 
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -45,7 +47,11 @@ android {
 
         getByName("release") {
             signingConfig = signingConfigs["release"]
+            versionNameSuffix = "-release"
+
             isMinifyEnabled = true
+            isShrinkResources = true
+
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
