@@ -51,7 +51,8 @@ object Koin {
     const val version = "2.0.1"
 
     val dependencies = arrayOf(
-        "implementation" to "org.koin:koin-core:$version"
+        "implementation" to "org.koin:koin-core:$version",
+        "implementation" to "org.koin:koin-test:$version"
     )
 }
 
@@ -103,6 +104,15 @@ object Tests {
     )
 }
 
+object TestsAndroid {
+    val dependencies = arrayOf(
+        "testImplementation" to "org.robolectric:robolectric:4.3.1",
+        "testImplementation" to "androidx.test:core:1.0.0",
+        "testImplementation" to "androidx.test:core-ktx:1.2.0"
+    )
+}
+
+
 val Classpaths = listOf(
     KotlinGradle.classpath,
     AndroidGradle.classpath,
@@ -119,7 +129,8 @@ val DependenciesAndroid =
             KoinAndroid.dependencies +
             Retrofit.dependencies +
             Moshi.dependencies +
-            Tests.dependencies
+            Tests.dependencies +
+            TestsAndroid.dependencies
 
 val DependenciesData =
     KotlinGradle.dependencies +

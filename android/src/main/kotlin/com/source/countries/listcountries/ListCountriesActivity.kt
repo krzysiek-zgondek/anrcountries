@@ -43,7 +43,7 @@ class ListCountriesActivity : AppCompatActivity() {
         countryViewModel.getCountries(fresh).observe(this, ::updateState)
     }
 
-    private fun updateState(state: ListCountriesState) {
+    internal fun updateState(state: ListCountriesState) {
         countryAdapter.items = state.countries
 
         showLoading(state.isLoading)

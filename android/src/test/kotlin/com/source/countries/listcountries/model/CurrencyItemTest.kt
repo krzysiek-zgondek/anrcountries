@@ -30,7 +30,7 @@ class CurrencyItemTest {
             .fromModel()
             .toItem()
 
-        assertEquals(currencies[0], item)
+        assertEquals(currenciesItems[0], item)
     }
 
     /*
