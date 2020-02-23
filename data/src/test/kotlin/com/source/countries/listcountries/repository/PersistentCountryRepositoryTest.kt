@@ -2,7 +2,6 @@ package com.source.countries.listcountries.repository
 
 import com.source.countries.common.mock
 import com.source.countries.listcountries.LocalCountryStorage
-import com.source.countries.listcountries.model.Country
 import com.source.countries.listcountries.model.CountryModel
 import com.source.countries.listcountries.model.CurrencyModel
 import com.source.countries.listcountries.model.fromModelList
@@ -12,10 +11,7 @@ import org.junit.Test
 import org.mockito.Mockito
 import org.threeten.bp.OffsetDateTime
 
-/**
- * @author SourceOne on 22.02.2020
- * @project Countries
- */
+
 class PersistentCountryRepositoryTest {
     private val countries = listOf(
         CountryModel("1", listOf("1"), listOf("1"), listOf(CurrencyModel("1", "1", "1"))),
@@ -43,7 +39,7 @@ class PersistentCountryRepositoryTest {
     fun `repository get valid countries gets all countries for valid duration`() {
         runBlocking {
             val localStorage: LocalCountryStorage = mock()
-            Mockito.`when`(localStorage.getAllValidCountries()).thenReturn(countries)
+            Mockito.`when`(localStorage.getAllCountries()).thenReturn(countries)
 
             val localRepo = PersistentCountryRepository(localStorage)
             val result = localRepo.getAllCountries()
@@ -55,7 +51,7 @@ class PersistentCountryRepositoryTest {
     fun `repository get valid countries gets no countries for invalid duration`() {
         runBlocking {
             val localStorage: LocalCountryStorage = mock()
-            Mockito.`when`(localStorage.getAllValidCountries()).thenReturn(invalidCountries)
+            Mockito.`when`(localStorage.getAllCountries()).thenReturn(invalidCountries)
 
             val localRepo = PersistentCountryRepository(localStorage)
             val result = localRepo.getAllCountries()

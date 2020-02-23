@@ -18,6 +18,7 @@ val CountryConfiguration = module {
 
     //repositories
     single<CountryRepository> { CountryRepositoryImpl(get(), get()) }
+
     factory<LocalCountryRepository> {
         PersistentCountryRepository(
             get(),

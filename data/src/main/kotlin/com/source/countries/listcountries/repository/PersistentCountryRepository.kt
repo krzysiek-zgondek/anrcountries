@@ -13,7 +13,7 @@ class PersistentCountryRepository(
 ) : LocalCountryRepository {
     override fun getAllCountries(): List<Country> {
         return storage
-            .getAllValidCountries()
+            .getAllCountries()
             .filterOutdated(dataLifeTime) { it.createdAt }
             .fromModelList()
     }

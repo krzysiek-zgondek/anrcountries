@@ -5,7 +5,7 @@ import io.objectbox.annotation.Id
 
 @Entity
 data class CurrencyItem(
-    @Id val id: Long,
+    @Id var id: Long,
     val code: String,
     val name: String,
     val symbol: String
@@ -24,4 +24,18 @@ inline fun Currency.toItem(): CurrencyItem {
 @Suppress("NOTHING_TO_INLINE")
 inline fun List<Currency>.toItemList(): List<CurrencyItem> {
     return map(Currency::toItem)
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun CurrencyItem.toModel(): CurrencyModel {
+    return CurrencyModel(
+        code = code,
+        name = name,
+        symbol = symbol
+    )
+}
+
+@Suppress("NOTHING_TO_INLINE")
+inline fun List<CurrencyItem>.toModelList(): List<CurrencyModel> {
+    return map(CurrencyItem::toModel)
 }
