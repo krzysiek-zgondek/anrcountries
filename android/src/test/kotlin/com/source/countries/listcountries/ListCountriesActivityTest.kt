@@ -30,8 +30,9 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.LooperMode
 
 /*
-* Note. On windows when running Robolectric tests sometimes you need to run "gradlew test" manually
-* for the first time. That is a bug either in current android studio or Robolectric itself
+* Note. On windows when running Robolectric tests inside IDE sometimes you need to run
+* "gradlew test" manually for the first time. That is a bug either in current
+* android studio or Robolectric itself
 * */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [28])
