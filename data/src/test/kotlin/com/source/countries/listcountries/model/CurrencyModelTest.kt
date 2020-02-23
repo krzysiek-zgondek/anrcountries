@@ -17,14 +17,12 @@ class CurrencyModelTest {
 
     @Test
     fun `toModel converter should return correct model`() {
-        //create model but omit force the date
         val model = currencies[0].toModel()
         assertEquals(currenciesModels[0], model)
     }
 
     @Test
     fun `toModel fromModel should return same item`() {
-        //create model but omit force the date
         val item = currencies[0].toModel().fromModel()
         assertEquals(currencies[0], item)
     }

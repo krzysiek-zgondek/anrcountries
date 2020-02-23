@@ -10,7 +10,7 @@ sealed class Resource<T> {
             return Success(value)
         }
 
-        inline fun <reified T : Throwable> error(reason: T): Resource<T> {
+        inline fun <reified T> error(reason: Throwable): Resource<T> {
             return Error(reason)
         }
     }
