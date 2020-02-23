@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.dsl.SigningConfig
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -6,32 +8,47 @@ plugins {
 }
 
 android {
-    //extract to properties
-    val ciVersionCode = 1
-    val ciVersionName = "1.0"
+    val ciProperties = readProperties("version.properties")
+        ?: throw IllegalStateException("need version file")
 
-    val sdkMin = 21
-    val sdkMax = 29
-
-    compileSdkVersion(sdkMax)
+    compileSdkVersion(29)
 
     buildToolsVersion = "29.0.2"
 
-    defaultConfig {
-        applicationId = "com.source.countries"
-        versionCode = ciVersionCode
-        versionName = ciVersionName
+    signingConfigs {
+        getByName("debug") {
+            applySignings("signings.properties", "debug")
+        }
+        register("release") {
+            applySignings("signings.properties", "release")
+        }
+    }
 
-        minSdkVersion(sdkMin)
-        targetSdkVersion(sdkMax)
+    defaultConfig {
+        applicationId = ciProperties.getProperty("applicationId")
+        versionCode = ciProperties.getProperty("versionCode")?.toInt()
+        versionName = ciProperties.getProperty("ciVersionName")
+
+        minSdkVersion(21)
+        targetSdkVersion(29)
     }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
+        getByName("debug") {
+            signingConfig = signingConfigs["debug"]
+
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+
+        getByName("release") {
+            signingConfig = signingConfigs["release"]
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -49,4 +66,14 @@ dependencies {
     implementation(project(":data"))
 
     DependenciesAndroid.forEach { (type, name) -> add(type, name) }
+}
+
+fun SigningConfig.applySignings(path: String, type: String) {
+    val properties = readProperties(path)
+        ?: throw IllegalStateException("need signing keys")
+
+    storeFile = file(properties.getProperty("keyStoreFile"))
+    storePassword = properties.getProperty("keyStorePassword")
+    keyAlias = properties.getProperty("${type}KeyAlias")
+    keyPassword = properties.getProperty("${type}KeyPassword")
 }
