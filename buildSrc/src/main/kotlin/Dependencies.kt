@@ -26,12 +26,14 @@ object KotlinCoroutines {
 
 object KotlinCoroutinesAndroid {
     val dependencies = arrayOf(
-        "implementation" to "org.jetbrains.kotlinx:kotlinx-coroutines-android:${KotlinCoroutines.version}"
+        "implementation" to "org.jetbrains.kotlinx:kotlinx-coroutines-android:${KotlinCoroutines.version}",
+        "testImplementation" to "org.jetbrains.kotlinx:kotlinx-coroutines-test:${KotlinCoroutines.version}"
     )
 }
 
 object AndroidX {
     val lifecycleVersion = "2.2.0"
+    val lifecycleTestVersion = "2.1.0"
 
     val dependencies = arrayOf(
         "implementation" to "androidx.appcompat:appcompat:1.1.0",
@@ -40,7 +42,8 @@ object AndroidX {
         "implementation" to "androidx.constraintlayout:constraintlayout:1.1.3",
         "implementation" to "androidx.core:core-ktx:1.2.0",
         "implementation" to "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
-        "implementation" to "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+        "implementation" to "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+        "testImplementation" to "androidx.arch.core:core-testing:$lifecycleTestVersion"
     )
 }
 

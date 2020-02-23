@@ -23,21 +23,33 @@ data class CountryItem(
     lateinit var currencies: ToMany<CurrencyItem>
 }
 
+@Suppress("NOTHING_TO_INLINE")
+inline fun countryItem(
+    name: String,
+    createdAt: OffsetDateTime,
+    topLevelDomain: List<String>,
+    callingCodes: List<String>,
+    currencies: List<CurrencyItem>
+): CountryItem {
+    return CountryItem(
+        name = name,
+        createdAt = createdAt,
+        topLevelDomain = topLevelDomain,
+        callingCodes = callingCodes
+    ).apply {
+        this.currencies.addAll(currencies)
+    }
+}
 
 @Suppress("NOTHING_TO_INLINE")
 inline fun Country.toItem(): CountryItem {
-    val item = CountryItem(
-        id = 0L,
+    return countryItem(
         name = name ?: "",
         createdAt = OffsetDateTime.now(),
         topLevelDomain = topLevelDomain ?: emptyList(),
-        callingCodes = callingCodes ?: emptyList()
+        callingCodes = callingCodes ?: emptyList(),
+        currencies = currencies?.toItemList() ?: emptyList()
     )
-
-    val providedCurrencies = currencies?.toItemList() ?: emptyList()
-    return item.apply {
-        currencies.addAll(providedCurrencies)
-    }
 }
 
 @Suppress("NOTHING_TO_INLINE")

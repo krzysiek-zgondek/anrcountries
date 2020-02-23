@@ -13,9 +13,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ListCountriesActivity : AppCompatActivity() {
-    private val countryViewModel by viewModel<ListCountriesViewModel>()
-    private val countryAdapter =
-        ListCountryAdapter()
+    private val countryViewModel: ListCountriesViewModel by viewModel()
+    private val countryAdapter = ListCountryAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

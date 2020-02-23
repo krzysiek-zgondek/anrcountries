@@ -10,8 +10,8 @@ import kotlinx.android.synthetic.main.item_country_list.view.*
 
 /*
 * We could use DataBinding or ViewBinding but this view is so simple i decided not to
-* Creating anonymous ViewHolder is possible due to kotlin syntactic extensions
-* So i also omitted view holder
+* Creating anonymous ViewHolder is possible due to kotlin syntactic extensions cache so
+* i also omitted view holder
 * */
 class ListCountryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var items: List<CountryItem> = emptyList()
