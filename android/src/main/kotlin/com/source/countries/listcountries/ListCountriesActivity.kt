@@ -46,12 +46,6 @@ class ListCountriesActivity : AppCompatActivity() {
     }
 
     private fun requestCountries(fresh: Boolean = false) {
-        val service = get<Retrofit>().create(CountryService::class.java)
-        GlobalScope.launch {
-            kotlin.runCatching {
-                service.countries()
-            }
-        }
         countryViewModel.getCountries(fresh).observe(this, ::updateState)
     }
 
