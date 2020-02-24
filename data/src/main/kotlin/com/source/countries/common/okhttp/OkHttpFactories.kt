@@ -9,7 +9,6 @@ fun createHttpClient(enableLogs: Boolean = false): OkHttpClient {
         if (enableLogs) {
             addInterceptor(createLoggingInterceptor())
         }
-        retryOnConnectionFailure(true)
         build()
     }
 }

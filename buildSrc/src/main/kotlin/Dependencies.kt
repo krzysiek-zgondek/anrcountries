@@ -12,9 +12,14 @@ object KotlinGradle {
     )
 }
 
-object ObjectBoxAndroid {
-    const val version = "2.5.1"
-    const val classpath = "io.objectbox:objectbox-gradle-plugin:$version"
+object Room {
+    const val version = "2.2.4"
+
+    val dependencies = arrayOf(
+        "implementation" to "androidx.room:room-runtime:$version",
+        "implementation" to "androidx.room:room-ktx:$version",
+        "kapt" to "androidx.room:room-compiler:$version"
+    )
 }
 
 object KotlinCoroutines {
@@ -115,14 +120,14 @@ object TestsAndroid {
 
 val Classpaths = listOf(
     KotlinGradle.classpath,
-    AndroidGradle.classpath,
-    ObjectBoxAndroid.classpath
+    AndroidGradle.classpath
 )
 
 val DependenciesAndroid =
     KotlinGradle.dependencies +
             KotlinCoroutines.dependencies +
             KotlinCoroutinesAndroid.dependencies +
+            Room.dependencies +
             ThreeTen.dependencies +
             AndroidX.dependencies +
             Koin.dependencies +

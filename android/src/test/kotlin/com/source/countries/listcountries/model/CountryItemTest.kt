@@ -12,14 +12,16 @@ class CountryItemTest {
     )
 
     private val countriesItems = listOf(
-        countryItem(
+        CountryItem(
+            0L,
             "1",
             OffsetDateTime.now(),
             listOf("1"),
             listOf("1"),
             listOf(CurrencyItem(0L, "1", "1", "1"))
         ).fabricateDates(),
-        countryItem(
+        CountryItem(
+            0L,
             "2",
             OffsetDateTime.now(),
             listOf("2"),

@@ -1,9 +1,9 @@
 package com.source.countries
 
+import androidx.room.Room
 import com.source.countries.common.retrofit.createRetrofit
 import com.source.countries.listcountries.ListCountryConfiguration
 import com.source.countries.listcountries.configuration.CountryConfiguration
-import com.source.countries.listcountries.model.MyObjectBox
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -11,9 +11,11 @@ import org.koin.dsl.module
 val CommonModules = module {
     //database
     single {
-        MyObjectBox.builder()
-            .androidContext(androidContext())
-            .build()
+        Room.databaseBuilder(
+            androidContext(),
+            CountriesDatabase::class.java,
+            CountriesDatabase.Name
+        ).build()
     }
 
     //networking

@@ -2,16 +2,15 @@ package com.source.countries.listcountries.storage
 
 import com.source.countries.listcountries.LocalCountryStorage
 import com.source.countries.listcountries.model.*
-import io.objectbox.Box
 
 
-class LocalCountriesDbStorage(private val countryBox: Box<CountryItem>) : LocalCountryStorage {
+class LocalCountriesDbStorage(private val countryDao: CountryItemDao) : LocalCountryStorage {
     override fun getAllCountries(): List<CountryModel> {
-        return countryBox.all.toModelList()
+        return countryDao.all().toModelList()
     }
 
     override fun setAllCountries(countries: List<CountryModel>) {
-        countryBox.removeAll()
-        countryBox.put(countries.fromModelList().toItemList())
+        countryDao.removeAll()
+        countryDao.insertAll(countries.fromModelList().toItemList())
     }
 }

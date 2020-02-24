@@ -6,10 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import com.source.countries.R
 import com.source.countries.listcountries.adapter.ListCountryAdapter
+import com.source.countries.listcountries.configuration.CountryConfiguration
+import com.source.countries.listcountries.service.CountryService
 import com.source.countries.listcountries.viewmodel.ListCountriesState
 import com.source.countries.listcountries.viewmodel.ListCountriesViewModel
 import kotlinx.android.synthetic.main.activity_list_countries.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import retrofit2.Retrofit
 
 
 class ListCountriesActivity : AppCompatActivity() {
@@ -29,7 +35,7 @@ class ListCountriesActivity : AppCompatActivity() {
     }
 
     private fun bindViews() {
-        errorView.setOnClickListener { requestCountries() }
+        errorView.setOnClickListener { requestCountries(fresh = true) }
 
         swipeRefreshView.setOnRefreshListener {
             swipeRefreshView.isRefreshing = false
@@ -40,6 +46,12 @@ class ListCountriesActivity : AppCompatActivity() {
     }
 
     private fun requestCountries(fresh: Boolean = false) {
+        val service = get<Retrofit>().create(CountryService::class.java)
+        GlobalScope.launch {
+            kotlin.runCatching {
+                service.countries()
+            }
+        }
         countryViewModel.getCountries(fresh).observe(this, ::updateState)
     }
 

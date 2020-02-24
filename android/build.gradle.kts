@@ -4,7 +4,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
-    id("io.objectbox")
+    kotlin("kapt")
 }
 
 android {
@@ -39,6 +39,8 @@ android {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
 
+            isMinifyEnabled = false
+
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -65,6 +67,12 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    bundle{
+        abi{
+            enableSplit = false
+        }
     }
 
     testOptions {

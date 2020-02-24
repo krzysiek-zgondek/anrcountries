@@ -1,11 +1,7 @@
 package com.source.countries.listcountries.model
 
-import io.objectbox.annotation.Entity
-import io.objectbox.annotation.Id
-
-@Entity
 data class CurrencyItem(
-    @Id var id: Long = 0L,
+    var id: Long = 0L,
     val code: String,
     val name: String,
     val symbol: String
